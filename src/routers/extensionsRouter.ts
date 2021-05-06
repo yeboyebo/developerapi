@@ -15,4 +15,8 @@ router.patch('/:name', (req, res) => {
   res.json(extensions.patch(req.body))
 })
 
+router.post('/', (req, res) => {
+  res.json(extensions.post(req.body.id))
+})
+
 export default router
