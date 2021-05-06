@@ -1,5 +1,9 @@
+import dotenv from 'dotenv'
+
+dotenv.config()
+
 export default {
-  port: 8005,
   baseUrl: '/api',
-  quimeraSrc: '~/workspace/quimera/src'
+  port: process.env.PORT ?? 8005,
+  quimeraSrc: `${process.env.QUIMERA_DIR}/src`
 }
