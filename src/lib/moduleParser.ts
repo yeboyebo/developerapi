@@ -9,7 +9,7 @@ const _listModule = (fixed: string, path?: string): string[] => {
 }
 
 const _readIndex = (path: string) => {
-  let content = filesys.readFile(`${path}/index.js`)
+  let content = filesys.read(`${path}/index.js`)
   content = content.split('export default')[1].replace(/\'/g, '"')
   content = content.replace(/([^\"\w+:])(\w+):/gm, '$1"$2\":')
   return JSON.parse(content)
@@ -19,7 +19,7 @@ const _writeIndex = (path: string, params: any) => {
   let content = JSON.stringify(params, null, 2)
   content = content.replace(/\"(\w+)\":/gm, '$1:')
   content = content.replace(/\"/g, '\'')
-  filesys.writeFile(`${path}/index.js`, `export default ${content}\n`)
+  filesys.write(`${path}/index.js`, `export default ${content}\n`)
   return {pk: params.path}
 }
 
@@ -37,7 +37,7 @@ const _createProject = (name: string, dir: string, template: string) => {
 const _createExtension = (name: string, dir: string, template: string) => {
   _createModule(name, dir, template)
   filesys.replaceInFile(`${dir}/${name}/index.js`, [['__template__', name]])
-  filesys.deleteFile(`${dir}/${name}/views/.tmp`)
+  filesys.delete(`${dir}/${name}/views/.tmp`)
   return {pk: dir}
 }
 
