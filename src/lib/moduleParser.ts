@@ -25,7 +25,7 @@ const _writeIndex = (path: string, params: any) => {
 
 const _createModule = (name: string, dir: string, template: string) => {
   filesys.createDirectory(`${dir}/${name.split('/').slice(0, -1).join('/')}`)
-  filesys.copyFile(template, `${dir}/${name}`)
+  filesys.copy(template, `${dir}/${name}`)
 }
 
 const _createProject = (name: string, dir: string, template: string) => {
