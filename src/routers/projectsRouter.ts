@@ -1,17 +1,17 @@
 import express from 'express'
 import projects from '../controllers/projectsCtrl'
 
-const router = express.Router()
+const router = express.Router({ mergeParams: true })
 
 router.get('/', (...[, res]) => {
   res.json(projects.list())
 })
 
-router.get('/:name', (req, res) => {
-  res.json(projects.get(req.params.name))
+router.get('/:project', (req, res) => {
+  res.json(projects.get(req.params.project))
 })
 
-router.patch('/:name', (req, res) => {
+router.patch('/:project', (req, res) => {
   res.json(projects.patch(req.body))
 })
 

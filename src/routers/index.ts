@@ -1,10 +1,10 @@
 import express from 'express'
-import projects from './projectsRouter'
-import extensions from './extensionsRouter'
+import projectsRouter from './projectsRouter'
+import extensionsRouter from './extensionsRouter'
 
-const router = express.Router()
+const router = express.Router({ mergeParams: true })
 
-router.use('/dev_projects', projects)
-router.use('/dev_extensions', extensions)
+router.use('/dev_projects', projectsRouter)
+router.use('/dev_extensions', extensionsRouter)
 
 export default router
