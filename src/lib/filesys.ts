@@ -8,7 +8,7 @@ const write = (file: string, content: string) => fs.writeFileSync(file, content,
 const copy = (source: string, dest: string) => fse.copySync(source, dest)
 const move = (source: string, dest: string) => fse.moveSync(source, dest)
 const _delete = (file: string) => fs.unlinkSync(file)
-const replaceInFile = (file: string, replaceArgs: string[][]) => {
+const replaceInFile = (file: string, replaceArgs: [[RegExp | string, string]]) => {
   let content = read(file)
   replaceArgs.map(arg => content = content.replace(arg[0], arg[1]))
   return write(file, content)
