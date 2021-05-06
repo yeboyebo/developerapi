@@ -19,4 +19,12 @@ router.post('/', (req, res) => {
   res.json(extensions.post(req.body.id))
 })
 
+router.post('/-static-/create_view', (req, res) => {
+  res.json(extensions.createView(req.body.ext, req.body.id))
+})
+
+router.post('/-static-/create_subview', (req, res) => {
+  res.json(extensions.createSubview(req.body.ext, req.body.id))
+})
+
 export default router
